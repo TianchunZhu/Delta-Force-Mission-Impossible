@@ -79,8 +79,10 @@ const OGIndex = () => {
 
 // ============= 01 FIELD BRIEF =============
 const OGSec01 = ({ navigate }) => (
-  <section id="og-01" className="section" style={{ borderBottom: '1px solid var(--line)' }}>
-    <div className="container">
+  <section id="og-01" className="section" style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+    <img src="图片素材/offgame首屏全宽背景.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.65 }} />
+    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.18) 100%)', zIndex: 1 }}></div>
+    <div className="container" style={{ position: 'relative', zIndex: 2 }}>
       <Breadcrumb trail={[
         { id: 'home', label: 'OVERVIEW' },
         { id: 'plan', label: '02 / CAMPAIGN PLAN' },
@@ -98,10 +100,10 @@ const OGSec01 = ({ navigate }) => (
             OPERATIONS
           </h1>
           <div style={{ marginTop: 10, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontWeight: 700, fontSize: 18, color: 'var(--text-secondary)' }}>游戏外行动方案</div>
-          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 15, color: 'var(--text-primary)', lineHeight: 1.75, margin: '20px 0 10px', maxWidth: 560 }}>
+          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 16, color: 'var(--text-primary)', lineHeight: 1.75, margin: '20px 0 10px', maxWidth: 560 }}>
             游戏内负责让玩家完成任务；游戏外负责让任务被看见、被组织、被讨论，并再次导回游戏。
           </p>
-          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0, maxWidth: 560 }}>
+          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 15, color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0, maxWidth: 560 }}>
             每一次实体情报硬盘撤离、每一次 Signal Tower 占领、每一次 Cipher Fragment 提交，都会进入游戏外系统：官网更新城市 Relay 状态，Discord 发布紧急简报，Creator 组织增援，社区继续破解下一段幽灵信号。
           </p>
         </div>
@@ -115,7 +117,7 @@ const OGSec01 = ({ navigate }) => (
           ))}
           <div style={{ marginTop: 24, paddingTop: 18, borderTop: '1px solid var(--line)' }}>
             <div className="ticker" style={{ color: 'var(--text-mute)', marginBottom: 6 }}>ROLE</div>
-            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-primary)', lineHeight: 1.6 }}>Turn gameplay into a live global operation.</div>
+            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-primary)', lineHeight: 1.6 }}>Turn gameplay into a live global operation.</div>
           </div>
         </RevealOG>
       </div>
@@ -134,11 +136,13 @@ const OGSec02 = () => {
     { n: '06', en: 'RETURN TO GAME', zh: '玩家回到游戏完成反攻、提交碎片、推进 Final Extraction', color: 'var(--df-green)' },
   ];
   return (
-    <section id="og-02" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
+    <section id="og-02" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
+      <img src="图片素材/闭环机制图背景.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.48 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.42) 100%)', zIndex: 1 }}></div>
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <OGMark n="02" k="OFF-GAME LOOP" sub=" / 游戏内外反馈闭环" />
         <SectionHeader num="02" name="OFF-GAME LOOP" title={<>一条完整的<br />行动闭环</>} kicker="Off-Game 不是游戏外宣传，而是 Live-Ops 反馈层。它把「我打了一局」转化成「我的城市节点发生了变化」。" accent="var(--mi-red)" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'stretch' }}>
           <div>
             {steps.map((s, i) => (
               <RevealOG key={s.n} delay={i + 1}>
@@ -151,7 +155,7 @@ const OGSec02 = () => {
                   </div>
                   <div style={{ paddingTop: 6, paddingBottom: 20 }}>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800, letterSpacing: '0.06em', color: s.color, textTransform: 'uppercase', marginBottom: 4 }}>{s.en}</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.55 }}>{s.zh}</div>
+                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.55 }}>{s.zh}</div>
                   </div>
                 </div>
               </RevealOG>
@@ -160,24 +164,39 @@ const OGSec02 = () => {
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--mi-red)', letterSpacing: '0.16em', opacity: 0.6 }}>↺ LOOP BACK TO 01</span>
             </div>
           </div>
-          <div>
-            <RevealOG dir="right" className="card" style={{ padding: '32px 28px', marginBottom: 20, textAlign: 'center', border: '1px solid var(--mi-red)', background: 'rgba(224,24,26,0.04)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <RevealOG dir="right" className="card" style={{ padding: '32px 28px', marginBottom: 20, textAlign: 'center', border: '1px solid var(--mi-red)', background: 'rgba(224,24,26,0.04)', flexShrink: 0 }}>
               <div className="ticker" style={{ color: 'var(--text-mute)', marginBottom: 12 }}>LOOP CORE</div>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 900, letterSpacing: '0.06em', color: 'var(--mi-red)', textTransform: 'uppercase', lineHeight: 1.15 }}>ROGUE SIGNAL<br />CORE</div>
               <div style={{ width: 32, height: 1, background: 'var(--mi-red)', margin: '16px auto' }}></div>
               <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-mute)', lineHeight: 1.65 }}>每一次行动，都向中央 Rogue Signal 核心汇聚数据。</div>
             </RevealOG>
-            {steps.map((s, i) => (
-              <RevealOG key={s.n} delay={i + 2} dir="right">
-                <div style={{ display: 'flex', gap: 12, padding: '10px 0', borderTop: '1px dashed var(--line)' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: s.color, flexShrink: 0, paddingTop: 2, letterSpacing: '0.1em' }}>{s.n}</span>
-                  <div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: s.color, letterSpacing: '0.12em', marginBottom: 3 }}>{s.en}</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', lineHeight: 1.55 }}>{s.zh}</div>
-                  </div>
-                </div>
-              </RevealOG>
+            <div style={{ flex: 1, minHeight: 0 }}>
+            <RevealOG dir="right" className="card" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
+            <div style={{ padding: '10px 18px', background: 'var(--bg-elev)', borderBottom: '1px solid var(--line)' }}>
+              <span className="ticker" style={{ color: 'var(--mi-red)' }}>// CAMPAIGN PHASE MAP</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '80px 80px 1fr 1fr', padding: '8px 16px', borderBottom: '1px solid var(--line)', background: 'rgba(0,0,0,0.2)' }}>
+              {['阶段', '市场任务', '用户动作', '核心内容'].map(h => (
+                <div key={h} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-mute)', letterSpacing: '0.12em' }}>{h}</div>
+              ))}
+            </div>
+            {[
+              { phase: 'REVEAL',   task: '制造悬念',    action: '关注、猜测、讨论',    content: '异常信号 Teaser / 倒计时',                     color: 'var(--hud-cyan)' },
+              { phase: 'RECRUIT',  task: '建立参与入口', action: '选择Relay、加入频道', content: 'Reveal Trailer / Global Signal Map',      color: 'var(--df-green)' },
+              { phase: 'ACTIVATE', task: '推动进游戏',   action: '下载、回流、完成任务', content: 'Launch Trailer / Drops / Creator直播',    color: 'var(--df-amber)' },
+              { phase: 'ESCALATE', task: '维持热度',     action: '增援、破译、分享高光', content: 'Weekly Report / Entity Interference',    color: 'var(--mi-red)'   },
+              { phase: 'EXTRACT',  task: '收束高潮',     action: '完成终局、分享战报',  content: 'Final Extraction / Personal Intel File', color: '#c8a44a'         },
+            ].map((row, i) => (
+              <div key={row.phase} style={{ display: 'grid', gridTemplateColumns: '80px 80px 1fr 1fr', padding: '11px 16px', borderTop: i ? '1px dashed var(--line)' : 'none', alignItems: 'start' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800, color: row.color, letterSpacing: '0.08em' }}>{row.phase}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{row.task}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', lineHeight: 1.5 }}>{row.action}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.6, letterSpacing: '0.03em' }}>{row.content}</div>
+              </div>
             ))}
+            </RevealOG>
+            </div>
           </div>
         </div>
       </div>
@@ -201,8 +220,10 @@ const OGSec03 = () => {
   const statusColor = { Stable: 'var(--df-green)', Exposed: 'var(--df-amber)', Compromised: 'var(--mi-red)', Secured: '#c8a44a' };
   const sel = cities[selected];
   return (
-    <section id="og-03" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
+    <section id="og-03" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
+      <img src="图片素材/官网Mockup主图.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.68 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.28) 100%)', zIndex: 1 }}></div>
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <OGMark n="03" k="GLOBAL SIGNAL MAP" sub=" / 活动官网主控台" />
         <SectionHeader num="03" name="GLOBAL SIGNAL MAP" title={<>全球战况，<br />实时更新</>} kicker="玩家在这里选择城市 Relay、查看全服战况、追踪 Cipher 进度、领取个人战报，并被引导回游戏完成下一步行动。" accent="var(--mi-red)" />
         <div style={{ display: 'grid', gridTemplateColumns: '65fr 35fr', gap: 20, marginBottom: 20 }}>
@@ -236,7 +257,7 @@ const OGSec03 = () => {
               {[['Stable', 'var(--df-green)', 4], ['Exposed', 'var(--df-amber)', 3], ['Compromised', 'var(--mi-red)', 1], ['Secured', '#c8a44a', 0]].map(([s, c, count]) => (
                 <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <div style={{ width: 6, height: 6, background: c, borderRadius: '50%' }}></div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: c, letterSpacing: '0.1em' }}>{s} ({count})</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: c, letterSpacing: '0.1em' }}>{s} ({count})</span>
                 </div>
               ))}
             </div>
@@ -244,20 +265,20 @@ const OGSec03 = () => {
           <RevealOG dir="right" className="card" style={{ padding: '22px 20px' }}>
             <div className="ticker" style={{ color: 'var(--text-mute)', marginBottom: 14 }}>SELECTED NODE</div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 800, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 4, color: statusColor[sel.status] }}>{sel.name}</div>
-            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', marginBottom: 18 }}>{sel.city}</div>
+            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 15, color: 'var(--text-mute)', marginBottom: 18 }}>{sel.city}</div>
             <div style={{ marginBottom: 14 }}>
               <div className="ticker" style={{ color: 'var(--text-mute)', marginBottom: 6 }}>SIGNAL DEFENSE VALUE</div>
               <div style={{ height: 4, background: 'var(--bg-elev)', marginBottom: 6 }}>
                 <div style={{ height: '100%', width: `${sel.pct}%`, background: statusColor[sel.status], transition: 'width 0.5s ease' }}></div>
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: statusColor[sel.status], fontWeight: 700 }}>{sel.pct}%</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: statusColor[sel.status], fontWeight: 700 }}>{sel.pct}%</div>
             </div>
             <div style={{ padding: '8px 12px', background: 'rgba(0,0,0,0.2)', border: `1px solid ${statusColor[sel.status]}`, marginBottom: 16 }}>
               <div className="ticker" style={{ color: 'var(--text-mute)', marginBottom: 3 }}>NODE STATUS</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800, color: statusColor[sel.status], letterSpacing: '0.06em' }}>{sel.status.toUpperCase()}</div>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 800, color: statusColor[sel.status], letterSpacing: '0.06em' }}>{sel.status.toUpperCase()}</div>
             </div>
             {["Today's Priority Mission", 'Join City Discord Channel', 'View Top Squads', 'Return to Game →'].map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, padding: '7px 0', borderTop: '1px dashed var(--line)', fontFamily: 'var(--font-mono)', fontSize: 9, color: i === 3 ? 'var(--mi-red)' : 'var(--text-mute)', letterSpacing: '0.08em' }}>
+              <div key={i} style={{ display: 'flex', gap: 8, padding: '7px 0', borderTop: '1px dashed var(--line)', fontFamily: 'var(--font-mono)', fontSize: 13, color: i === 3 ? 'var(--mi-red)' : 'var(--text-mute)', letterSpacing: '0.08em' }}>
                 <span style={{ color: 'var(--mi-red)', opacity: 0.6 }}>→</span><span>{item}</span>
               </div>
             ))}
@@ -268,7 +289,7 @@ const OGSec03 = () => {
           <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 0 }}>
             {['进入官网', '选择城市 Relay', '查看节点状态', '领取今日任务提示', '加入 Discord 频道', '回游戏完成任务', '刷新贡献进度'].map((step, i, arr) => (
               <React.Fragment key={step}>
-                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', padding: '6px 12px', background: 'var(--bg-elev)', border: '1px solid var(--line)' }}>{step}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', padding: '6px 12px', background: 'var(--bg-elev)', border: '1px solid var(--line)' }}>{step}</div>
                 {i < arr.length - 1 && <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--mi-red)', padding: '0 4px' }}>→</span>}
               </React.Fragment>
             ))}
@@ -282,59 +303,61 @@ const OGSec03 = () => {
 // ============= 04 CITY RELAY NETWORK =============
 const OGSec04 = () => {
   const cities = [
-    { relay: 'THAMES RELAY',  zh: '泰晤士节点', img: '泰晤士节点卡.png',  status: '暴露中', type: 'exposed',  defense: 72, cipher: '3 / 7' },
-    { relay: 'LIBERTY RELAY', zh: '自由节点',   img: '自由节点卡.png',    status: '已稳固', type: 'secured',  defense: 89, cipher: '5 / 7' },
-    { relay: 'PACIFIC RELAY', zh: '太平洋节点', img: '太平洋节点卡.png',  status: '被入侵', type: 'breached', defense: 41, cipher: '2 / 7' },
-    { relay: 'RHINE RELAY',   zh: '莱茵节点',   img: '莱茵节点卡.png',    status: '已稳固', type: 'secured',  defense: 95, cipher: '6 / 7' },
-    { relay: 'SEINE RELAY',   zh: '塞纳节点',   img: '塞纳节点卡.png',    status: '暴露中', type: 'exposed',  defense: 63, cipher: '4 / 7' },
-    { relay: 'AURORA RELAY',  zh: '极光节点',   img: '极光节点.png',      status: '被入侵', type: 'breached', defense: 28, cipher: '1 / 7' },
+    { relay: 'THAMES RELAY',   zh: '泰晤士节点',   img: '泰晤士节点卡.png',  status: '暴露中', type: 'exposed',  defense: 72, cipher: '3 / 7' },
+    { relay: 'LIBERTY RELAY', zh: '自由节点',    img: '自由节点卡.png',    status: '已稳固', type: 'secured',  defense: 89, cipher: '5 / 7' },
+    { relay: 'PACIFIC RELAY', zh: '太平洋节点',  img: '太平洋节点卡.png',  status: '被入侵', type: 'breached', defense: 41, cipher: '2 / 7' },
+    { relay: 'RHINE RELAY',   zh: '莱茵节点',    img: '莱茵节点卡.png',    status: '已稳固', type: 'secured',  defense: 95, cipher: '6 / 7' },
+    { relay: 'SEINE RELAY',   zh: '塞纳节点',    img: '塞纳节点卡.png',    status: '暴露中', type: 'exposed',  defense: 63, cipher: '4 / 7' },
+    { relay: 'AURORA RELAY',  zh: '极光节点',    img: '极光节点.png',      status: '被入侵', type: 'breached', defense: 28, cipher: '1 / 7' },
+    { relay: 'IBERIA RELAY',  zh: '伊比利亚节点', img: '伊比利亚节点.png', status: '暴露中', type: 'exposed',  defense: 56, cipher: '3 / 7' },
+    { relay: 'ATLANTIC RELAY',zh: '大西洋节点',  img: '大西洋节点.png',    status: '已稳固', type: 'secured',  defense: 81, cipher: '5 / 7' },
   ];
   return (
-    <section id="og-04" className="relay-nodes-section">
-      <img src="图片素材/全球信号地图背景.png" alt="" className="relay-nodes-bg" />
-      <div className="relay-nodes-overlay"></div>
-      <div className="container relay-nodes-content">
-        <OGMark n="04" k="CITY RELAY NETWORK" sub=" / 城市 Relay 系统" />
-        <SectionHeader num="04" name="CITY RELAY NETWORK" title={<>守住你的<span style={{ color: 'var(--df-green)' }}>信号节点</span></>} kicker="选择一个城市Relay，完成任务，推动全球信号防卫进度。" accent="var(--df-green)" />
-        <div className="relay-city-grid">
-          {cities.map(city => {
-            const barColor = city.type === 'breached' ? 'var(--mi-red)' : city.type === 'exposed' ? 'var(--df-amber)' : 'var(--df-green)';
-            return (
-              <div key={city.relay} className="relay-city-card">
-                <div className="relay-city-img-wrap">
-                  <img src={`图片素材/${city.img}`} alt={city.zh} className="relay-city-img" />
-                  <div className="relay-city-img-bottom">
-                    <span className="relay-city-name-en">{city.relay}</span>
-                    <span className="relay-city-name-zh">{city.zh}</span>
+    <section id="og-04" className="section" style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+      <img src="图片素材/城市Relay系统主视觉.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.85 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 100%)', zIndex: 1 }}></div>
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <OGMark n="04" k="CITY RELAY NETWORK" sub=" / 城市 Relay 系统" />
+          <SectionHeader num="04" name="CITY RELAY NETWORK" title={<>守住你的<span style={{ color: 'var(--df-green)' }}>信号节点</span></>} kicker="选择一个城市Relay，完成任务，推动全球信号防卫进度。" accent="var(--df-green)" />
+          <div className="relay-city-grid">
+            {cities.map(city => {
+              const barColor = city.type === 'breached' ? 'var(--mi-red)' : city.type === 'exposed' ? 'var(--df-amber)' : 'var(--df-green)';
+              return (
+                <div key={city.relay} className="relay-city-card">
+                  <div className="relay-city-img-wrap">
+                    <img src={`图片素材/${city.img}`} alt={city.zh} className="relay-city-img" />
+                    <div className="relay-city-img-bottom">
+                      <span className="relay-city-name-en">{city.relay}</span>
+                      <span className="relay-city-name-zh">{city.zh}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="relay-city-info">
-                  <div className="relay-city-header">
-                    <span className={`relay-status-badge relay-status-${city.type}`}>{city.status}</span>
-                  </div>
-                  <div className="relay-city-stats">
-                    <div className="relay-stat">
-                      <span className="relay-stat-label">信号防卫值</span>
-                      <div className="relay-stat-bar-wrap">
-                        <div className="relay-stat-bar" style={{ width: `${city.defense}%`, background: barColor }}></div>
+                  <div className="relay-city-info">
+                    <div className="relay-city-header">
+                      <span className={`relay-status-badge relay-status-${city.type}`}>{city.status}</span>
+                    </div>
+                    <div className="relay-city-stats">
+                      <div className="relay-stat">
+                        <span className="relay-stat-label">信号防卫值</span>
+                        <div className="relay-stat-bar-wrap">
+                          <div className="relay-stat-bar" style={{ width: `${city.defense}%`, background: barColor }}></div>
+                        </div>
+                        <span className="relay-stat-val">{city.defense}%</span>
                       </div>
-                      <span className="relay-stat-val">{city.defense}%</span>
-                    </div>
-                    <div className="relay-stat">
-                      <span className="relay-stat-label">密码碎片</span>
-                      <span className="relay-stat-cipher">{city.cipher}</span>
-                    </div>
-                    <div className="relay-stat">
-                      <span className="relay-stat-label">最高贡献小队</span>
-                      <span className="relay-stat-classified">[ 机密 ]</span>
+                      <div className="relay-stat">
+                        <span className="relay-stat-label">密码碎片</span>
+                        <span className="relay-stat-cipher">{city.cipher}</span>
+                      </div>
+                      <div className="relay-stat">
+                        <span className="relay-stat-label">最高贡献小队</span>
+                        <span className="relay-stat-classified">[ 机密 ]</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
     </section>
   );
 };
@@ -350,8 +373,10 @@ const OGSec05 = () => {
   ];
   const s = states[active];
   return (
-    <section id="og-05" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
+    <section id="og-05" className="section" style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
+      <img src="图片素材/状态机模块背景.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.48 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.42) 100%)', zIndex: 1 }}></div>
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <OGMark n="05" k="RELAY STATE SYSTEM" sub=" / 节点状态与触发机制" />
         <SectionHeader num="05" name="RELAY STATE SYSTEM" title={<>状态机<br />驱动节奏</>} kicker="状态不是随机切换。它由游戏内贡献、社区破译进度和系统攻击窗口三类数据共同决定。" accent="var(--mi-red)" />
         <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 20, marginBottom: 24 }}>
@@ -361,7 +386,7 @@ const OGSec05 = () => {
                 <div style={{ width: 8, height: 8, background: st.color, borderRadius: '50%', flexShrink: 0, boxShadow: active === i ? `0 0 8px ${st.color}` : 'none' }}></div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: st.color, letterSpacing: '0.12em' }}>{st.key.toUpperCase()}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)', marginTop: 2 }}>{st.zh}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', marginTop: 2 }}>{st.zh}</div>
                 </div>
               </button>
             ))}
@@ -369,12 +394,12 @@ const OGSec05 = () => {
           </div>
           <div className="card" style={{ padding: '24px 28px', borderTop: `3px solid ${s.color}` }}>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 900, letterSpacing: '0.04em', color: s.color, textTransform: 'uppercase', marginBottom: 4 }}>{s.key}</div>
-            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-mute)', marginBottom: 20 }}>{s.zh}</div>
+            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 15, color: 'var(--text-mute)', marginBottom: 20 }}>{s.zh}</div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
               {[['触发条件', s.trigger], ['官网表现', s.web], ['社区动作', s.community], ['游戏内回流', s.game]].map(([label, val]) => (
                 <div key={label} style={{ padding: '14px 16px', background: 'var(--bg-elev)' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-mute)', letterSpacing: '0.14em', marginBottom: 6 }}>{label}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{val}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{val}</div>
                 </div>
               ))}
             </div>
@@ -386,7 +411,7 @@ const OGSec05 = () => {
             {[['触发', '防卫值低于 20%'], ['持续', '24 小时'], ['官网', '节点变红，倒计时 + 增援 CTA'], ['Discord', '#thames-relay 紧急简报推送'], ['社区目标', '24h 内完成指定次数 Operations 硬盘撤离 + Warfare 信号塔']].map(([k, v]) => (
               <div key={k}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-mute)', letterSpacing: '0.12em', marginBottom: 4 }}>{k}</div>
-                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{v}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{v}</div>
               </div>
             ))}
           </div>
@@ -414,14 +439,22 @@ const OGSec06 = () => {
   ];
   const cx0 = 190, cy0 = 185, radius = 135;
   return (
-    <section id="og-06" className="section" style={{ borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
-        <OGMark n="06" k="THE IMPOSSIBLE CIPHER" sub=" / 全服谜题破解" />
-        <SectionHeader num="06" name="THE IMPOSSIBLE CIPHER" title={<>不可能密码，<br />全服协作破解</>} kicker="失联 IMF 特工留下的情报被拆分成多个 Cipher Fragment。玩家需要把碎片拼回中央 Ghost Relay 坐标。当全服破解进度达到 100%，Final Extraction 解锁。" accent="var(--mi-red)" />
+    <section id="og-06" className="section" style={{ borderBottom: '1px solid var(--line)', padding: 0 }}>
+      {/* Header with background image */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <img src="图片素材/Impossible Cipher 背景图.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.88 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.22) 100%)', zIndex: 1 }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 'var(--section-pad, 72px)', paddingBottom: 'var(--section-pad, 72px)' }}>
+          <OGMark n="06" k="THE IMPOSSIBLE CIPHER" sub=" / 全服谜题破解" />
+          <SectionHeader num="06" name="THE IMPOSSIBLE CIPHER" title={<>不可能密码，<br />全服协作破解</>} kicker="Rogue Signal 不是一段完整信号，而是 Haavk 通过 GHOST AI 拆分、污染并分发到多个城市Relay的加密片段。玩家需要从游戏内任务、官网地图、Discord城市频道、Creator任务箱和城市信号点中收集 Cipher Fragment，拼回中央 Ghost Relay 坐标。" accent="var(--mi-red)" />
+        </div>
+      </div>
+      {/* Rest of section — no background image */}
+      <div className="container" style={{ paddingTop: 72, paddingBottom: 96 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 32, marginBottom: 28, alignItems: 'center' }}>
           <div style={{ position: 'relative', height: 380 }}>
             <div style={{ position: 'absolute', left: cx0, top: cy0, transform: 'translate(-50%,-50%)', width: 96, height: 96, border: '2px solid var(--mi-red)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(224,24,26,0.08)', zIndex: 2 }}>
-              <div style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 9, fontWeight: 900, color: 'var(--mi-red)', letterSpacing: '0.1em', lineHeight: 1.4 }}>CIPHER<br />CORE</div>
+              <div style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 900, color: 'var(--mi-red)', letterSpacing: '0.1em', lineHeight: 1.4 }}>CIPHER<br />CORE</div>
             </div>
             <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
               {sources.map((src, i) => {
@@ -438,7 +471,7 @@ const OGSec06 = () => {
               return (
                 <div key={i} style={{ position: 'absolute', left: nx, top: ny, transform: 'translate(-50%,-50%)', zIndex: 2 }}>
                   <div style={{ padding: '7px 10px', border: `1px solid ${src.color}`, background: 'rgba(5,7,7,0.9)', textAlign: 'center', minWidth: 76 }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: src.color, letterSpacing: '0.08em', lineHeight: 1.5, whiteSpace: 'pre-line' }}>{src.label}</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: src.color, letterSpacing: '0.08em', lineHeight: 1.5, whiteSpace: 'pre-line' }}>{src.label}</div>
                   </div>
                 </div>
               );
@@ -452,9 +485,9 @@ const OGSec06 = () => {
               </div>
               {sources.map((src, i) => (
                 <div key={i} style={{ display: 'grid', gridTemplateColumns: '130px 36px 1fr', gap: 12, alignItems: 'center', padding: '11px 18px', borderTop: i ? '1px dashed var(--line)' : 'none' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: src.color, letterSpacing: '0.06em' }}>{src.label.replace('\n', ' ')}</div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-mute)', textAlign: 'center' }}>{src.gate}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.45 }}>{src.output}<br /><span style={{ color: 'var(--text-mute)', fontSize: 11 }}>{src.role}</span></div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: src.color, letterSpacing: '0.06em' }}>{src.label.replace('\n', ' ')}</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-mute)', textAlign: 'center' }}>{src.gate}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.45 }}>{src.output}<br /><span style={{ color: 'var(--text-mute)', fontSize: 12 }}>{src.role}</span></div>
                 </div>
               ))}
             </div>
@@ -465,8 +498,8 @@ const OGSec06 = () => {
           {tiers.map((t, i) => (
             <RevealOG key={t.n} delay={i + 1} className="card" style={{ padding: '18px 16px', borderTop: `3px solid ${t.color}` }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: t.color, letterSpacing: '0.18em', marginBottom: 6 }}>{t.n}</div>
-              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 10 }}>{t.label}</div>
-              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', lineHeight: 1.6 }}>{t.desc}</div>
+              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontWeight: 700, fontSize: 15, color: 'var(--text-primary)', marginBottom: 10 }}>{t.label}</div>
+              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-mute)', lineHeight: 1.6 }}>{t.desc}</div>
             </RevealOG>
           ))}
         </div>
@@ -474,23 +507,23 @@ const OGSec06 = () => {
           <div className="ticker" style={{ marginBottom: 10, color: 'var(--df-green)' }}>// 防止 ARG 劝退</div>
           <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
             {['每周发布 Signal Report，汇总已解线索', '官网提供进度提示，不让玩家完全卡死', '核心奖励不只给解谜高手，普通玩家通过游戏内任务也能贡献', '高难谜题只用于彩蛋和荣誉，不影响基础参与'].map((p, i) => (
-              <div key={i} style={{ display: 'flex', gap: 8, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              <div key={i} style={{ display: 'flex', gap: 8, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 <span style={{ color: 'var(--df-green)', flexShrink: 0 }}>✓</span><span>{p}</span>
               </div>
             ))}
           </div>
         </RevealOG>
-        <OGDivider label="6.3 · ENTITY INTERFERENCE — 反派 AI 干扰机制" />
+        <OGDivider label="6.3 · GHOST INTERFERENCE — 幽灵AI干扰机制" />
         <RevealOG className="card" style={{ padding: '22px 24px', border: '1px solid rgba(224,24,26,0.4)', background: 'rgba(224,24,26,0.04)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 15, letterSpacing: '0.12em', color: 'var(--mi-red)', animation: 'glitchA 3s infinite' }}>ENTITY INTERFERENCE</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 20, letterSpacing: '0.12em', color: 'var(--mi-red)', animation: 'glitchA 3s infinite' }}>GHOST INTERFERENCE</div>
             <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, rgba(224,24,26,0.5), transparent)' }}></div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--mi-red)', border: '1px solid var(--mi-red)', padding: '2px 8px', letterSpacing: '0.14em' }}>ACTIVE</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--mi-red)', border: '1px solid var(--mi-red)', padding: '2px 8px', letterSpacing: '0.14em' }}>ACTIVE</div>
           </div>
-          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: 20, maxWidth: 680 }}>
-            反派 AI "GHOST" 将在活动中途制造干扰事件——地图闪烁、Discord 乱码、Creator 音频劫持。干扰不破坏游戏体验，但推动剧情、制造社区爆点，并强化 ARG 氛围。
+          <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 20, maxWidth: 720 }}>
+            GHOST 是 Rogue Signal 背后的异常智能系统。在Campaign期间，官网、Discord和Weekly Signal Report会偶尔被GHOST干扰：地图节点短暂失真；Cipher线索被乱码覆盖；Discord简报被插入异常代码；Weekly Report中的部分坐标被篡改。玩家需要识别哪些是真线索，哪些是 Haavk 通过 Rogue Signal 投放的干扰信号。
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12, marginBottom: 18 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12, marginBottom: 20 }}>
             {[
               { trigger: 'Global Signal Map', zh: '全球地图', event: '节点坐标闪烁 / 乱码入侵', icon: '◈', idx: '01' },
               { trigger: 'Discord Briefing', zh: 'Discord 简报', event: '异常代码块注入频道', icon: '◉', idx: '02' },
@@ -498,18 +531,18 @@ const OGSec06 = () => {
               { trigger: 'Weekly Report', zh: '每周战报', event: '坐标数据部分遮挡', icon: '◑', idx: '04' },
               { trigger: 'Final Week', zh: '终章倒计时', event: '全渠道大规模干扰爆发', icon: '▣', idx: '05' },
             ].map((item) => (
-              <div key={item.idx} style={{ padding: '14px 12px', background: 'var(--bg-elev)', border: '1px solid rgba(224,24,26,0.2)', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: 'rgba(224,24,26,0.15)', position: 'absolute', top: 8, right: 10 }}>{item.icon}</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'var(--mi-red)', letterSpacing: '0.14em', marginBottom: 4 }}>TRIGGER {item.idx}</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 800, letterSpacing: '0.04em', marginBottom: 2, lineHeight: 1.2 }}>{item.trigger}</div>
-                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 9, color: 'var(--text-mute)', marginBottom: 10 }}>{item.zh}</div>
-                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{item.event}</div>
+              <div key={item.idx} style={{ padding: '16px 14px', background: 'var(--bg-elev)', border: '1px solid rgba(224,24,26,0.2)', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, color: 'rgba(224,24,26,0.15)', position: 'absolute', top: 8, right: 10 }}>{item.icon}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--mi-red)', letterSpacing: '0.14em', marginBottom: 5 }}>TRIGGER {item.idx}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800, letterSpacing: '0.04em', marginBottom: 3, lineHeight: 1.2 }}>{item.trigger}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)', marginBottom: 10 }}>{item.zh}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.55 }}>{item.event}</div>
               </div>
             ))}
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            {['GHOST RELAY OVERRIDE', 'SIGNAL CORRUPTED', 'ENTITY TRACE DETECTED'].map((txt, i) => (
-              <div key={txt} style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--mi-red)', border: '1px dashed rgba(224,24,26,0.5)', padding: '4px 12px', letterSpacing: '0.18em', animation: `glitchA ${2 + i * 0.7}s infinite` }}>{txt}</div>
+            {['GHOST RELAY OVERRIDE', 'SIGNAL CORRUPTED', 'ROGUE SIGNAL TRACE DETECTED'].map((txt, i) => (
+              <div key={txt} style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--mi-red)', border: '1px dashed rgba(224,24,26,0.5)', padding: '5px 14px', letterSpacing: '0.18em', animation: `glitchA ${2 + i * 0.7}s infinite` }}>{txt}</div>
             ))}
           </div>
         </RevealOG>
@@ -544,10 +577,18 @@ const OGSec07 = () => {
     { sender: 'SIGNAL_BOT', role: 'SYSTEM', color: 'var(--mi-red)', msg: '进度更新：Thames 防卫值 22%（+4%）。增援有效，继续推进。', time: '22:31' },
   ];
   return (
-    <section id="og-07" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
-        <OGMark n="07" k="DISCORD COMMAND CENTER" sub=" / Discord 城市指挥中心" />
-        <SectionHeader num="07" name="DISCORD COMMAND CENTER" title={<>城市频道，<br />Relay 作战室</>} kicker="每个 Relay 拥有独立频道，官方每日发布任务、战报、线索和 Creator 开播提醒。玩家在这里交换 Cipher 线索、组织小队、报名城市增援。" accent="var(--mi-red)" />
+    <section id="og-07" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)', padding: 0 }}>
+      {/* Header with background image */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <img src="图片素材/Discord Command Center 背景图.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.88 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.22) 100%)', zIndex: 1 }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 72, paddingBottom: 72 }}>
+          <OGMark n="07" k="DISCORD COMMAND CENTER" sub=" / Discord 城市指挥中心" />
+          <SectionHeader num="07" name="DISCORD COMMAND CENTER" title={<>城市频道，<br />Relay 作战室</>} kicker="每个 Relay 拥有独立频道，官方每日发布任务、战报、线索和 Creator 开播提醒。玩家在这里交换 Cipher 线索、组织小队、报名城市增援。" accent="var(--mi-red)" />
+        </div>
+      </div>
+      {/* Rest of section */}
+      <div className="container" style={{ paddingTop: 72, paddingBottom: 96 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '190px 1fr 250px', gap: 16 }}>
           <RevealOG dir="left" className="card" style={{ padding: 0, overflow: 'hidden' }}>
             <div style={{ padding: '9px 14px', background: 'var(--bg-elev)', borderBottom: '1px solid var(--line)' }}>
@@ -557,8 +598,8 @@ const OGSec07 = () => {
               <div key={ch.name} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '9px 12px', borderTop: i ? '1px solid rgba(255,255,255,0.03)' : 'none', background: ch.alert ? 'rgba(224,24,26,0.07)' : 'transparent' }}>
                 {ch.alert && <div style={{ width: 5, height: 5, background: 'var(--mi-red)', borderRadius: '50%', flexShrink: 0, marginTop: 4, boxShadow: '0 0 5px var(--mi-red)' }}></div>}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: ch.alert ? 'var(--mi-red)' : 'var(--text-mute)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{ch.name}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 10, color: 'var(--text-mute)', marginTop: 1, lineHeight: 1.3 }}>{ch.desc}</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: ch.alert ? 'var(--mi-red)' : 'var(--text-mute)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{ch.name}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-mute)', marginTop: 1, lineHeight: 1.3 }}>{ch.desc}</div>
                 </div>
               </div>
             ))}
@@ -576,7 +617,7 @@ const OGSec07 = () => {
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'var(--text-mute)', border: `1px solid ${m.color}`, padding: '1px 5px' }}>{m.role}</span>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'var(--text-mute)', marginLeft: 'auto' }}>{m.time}</span>
                   </div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6 }}>{m.msg}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>{m.msg}</div>
                 </div>
               ))}
             </div>
@@ -586,7 +627,7 @@ const OGSec07 = () => {
               <div className="card" style={{ padding: '16px 16px', borderTop: '3px solid var(--mi-red)' }}>
                 <div className="ticker" style={{ color: 'var(--mi-red)', marginBottom: 10 }}>// 今日优先任务</div>
                 {['Operations 硬盘撤离', 'Warfare Signal Tower ×2', 'Cipher Fragment 提交'].map((t, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 8, padding: '7px 0', borderTop: i ? '1px dashed var(--line)' : 'none', fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)' }}>
+                  <div key={i} style={{ display: 'flex', gap: 8, padding: '7px 0', borderTop: i ? '1px dashed var(--line)' : 'none', fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)' }}>
                     <span style={{ color: 'var(--mi-red)', fontFamily: 'var(--font-mono)', fontSize: 9, flexShrink: 0 }}>→</span><span>{t}</span>
                   </div>
                 ))}
@@ -597,7 +638,7 @@ const OGSec07 = () => {
                   <div key={i} style={{ padding: '8px 0', borderTop: i ? '1px dashed var(--line)' : 'none' }}>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'var(--df-amber)', letterSpacing: '0.1em', marginBottom: 2 }}>{s.time}</div>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>{s.title}</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 10, color: 'var(--text-mute)', lineHeight: 1.45 }}>{s.desc}</div>
+                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.45 }}>{s.desc}</div>
                   </div>
                 ))}
               </div>
@@ -610,8 +651,8 @@ const OGSec07 = () => {
             <div className="ticker" style={{ color: 'var(--hud-cyan)', marginBottom: 16 }}>// DROP 获取路径</div>
             {[
               '完成游戏内城市 Relay 任务',
-              '在 Discord 提交任务截图',
-              '参与每日 Briefing 签到',
+              '系统同步任务完成状态',
+              '参与每日 Briefing 互动',
               'Creator 直播观看 + 互动',
               '每周 Signal Report 分享',
             ].map((step, i, arr) => (
@@ -622,7 +663,7 @@ const OGSec07 = () => {
                   </div>
                   {i < arr.length - 1 && <div style={{ width: 1, height: 18, background: 'rgba(0,212,255,0.2)' }}></div>}
                 </div>
-                <div style={{ paddingTop: 4, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5, minHeight: i < arr.length - 1 ? 40 : 'auto' }}>{step}</div>
+                <div style={{ paddingTop: 4, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5, minHeight: i < arr.length - 1 ? 40 : 'auto' }}>{step}</div>
               </div>
             ))}
           </RevealOG>
@@ -642,7 +683,7 @@ const OGSec07 = () => {
                 <div style={{ width: 3, height: 32, background: row.color }}></div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>{row.drop}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 10, color: 'var(--text-mute)' }}>{row.zh}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)' }}>{row.zh}</div>
                 </div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: row.color, border: `1px solid ${row.color}`, padding: '2px 7px', letterSpacing: '0.12em', flexShrink: 0, whiteSpace: 'nowrap' }}>{row.rarity}</div>
               </div>
@@ -651,19 +692,14 @@ const OGSec07 = () => {
           <RevealOG dir="right" className="card" style={{ padding: '20px 18px', borderTop: '3px solid var(--hud-cyan)' }}>
             <div className="ticker" style={{ color: 'var(--hud-cyan)', marginBottom: 14 }}>// DROP 示例</div>
             <div style={{ background: 'var(--bg-elev)', border: '1px solid var(--line)', marginBottom: 14, position: 'relative', overflow: 'hidden' }}>
-              <div style={{ paddingBottom: '75%', position: 'relative', background: 'linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(0,0,0,0) 60%)' }}>
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
-                  <div style={{ width: 48, height: 48, border: '2px dashed rgba(0,212,255,0.35)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'rgba(0,212,255,0.45)', letterSpacing: '0.06em' }}>CHARM</span>
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'rgba(0,212,255,0.3)', letterSpacing: '0.1em' }}>3D ASSET</div>
-                </div>
+              <div style={{ paddingBottom: '75%', position: 'relative' }}>
+                <img src="图片素材/泰晤士节点挂件.png" alt="Thames Relay Charm" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
             </div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800, letterSpacing: '0.06em', marginBottom: 4 }}>THAMES RELAY CHARM</div>
-            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)', marginBottom: 12 }}>泰晤士节点挂件</div>
+            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)', marginBottom: 12 }}>泰晤士节点挂件</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'var(--hud-cyan)', border: '1px solid var(--hud-cyan)', padding: '2px 8px', display: 'inline-block', letterSpacing: '0.12em', marginBottom: 12 }}>RARE</div>
-            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.55 }}>完成 Thames Relay 防卫任务并在 Discord 提交证明，限时掉落。</div>
+            <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.55 }}>完成 Thames Relay 防卫任务并在 Discord 提交证明，限时掉落。</div>
           </RevealOG>
         </div>
       </div>
@@ -678,54 +714,50 @@ const OGSec08 = () => {
       code: 'CAT-01', type: '破圈挑战 KOL', en: 'VIRAL CHALLENGE', color: 'var(--df-amber)',
       desc: '超越游戏圈层，触达主流娱乐受众',
       kols: [
-        { name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube / TikTok', reach: '340M+', role: '城市挑战发起', task: '城市 Relay 挑战赛' },
-        { name: 'Dude Perfect', handle: '@DudePerfect', platform: 'YouTube', reach: '61M', role: '团队挑战执行', task: '小队协作任务' },
-        { name: 'Storror', handle: '@Storror', platform: 'YouTube', reach: '5.8M', role: '城市信号点突破', task: '线下城市线索任务' },
-        { name: 'Yes Theory', handle: '@YesTheory', platform: 'YouTube', reach: '9.2M', role: 'ARG 参与探索', task: '城市任务与挑战' },
+        { name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube / TikTok', audience: 'Mainstream Challenge', role: '城市挑战发起', task: '城市 Relay 挑战赛', photo: '图片素材/kol/MrBeast.png' },
+        { name: 'Dude Perfect', handle: '@DudePerfect', platform: 'YouTube', audience: 'Mainstream Sports', role: '团队挑战执行', task: '小队协作任务', photo: '图片素材/kol/dude perfect.png' },
+        { name: 'Storror', handle: '@Storror', platform: 'YouTube', audience: 'Outdoor Action', role: '城市信号点突破', task: '线下城市线索任务', photo: '图片素材/kol/storre.png' },
+        { name: 'Max Fosh', handle: '@MaxFosh', platform: 'YouTube · Comedy Stunts / Social Experiments', audience: '', role: 'Signal Trickster · 信号整活特工', task: 'Thames Relay 假信号挑战', photo: '图片素材/kol/max fosh.png' },
       ],
     },
     {
       code: 'CAT-02', type: 'FPS 直播 KOL', en: 'FPS LIVE OPS', color: 'var(--mi-red)',
       desc: '核心战斗玩家触达，Relay 防卫主力军',
       kols: [
-        { name: 'shroud', handle: '@shroud', platform: 'Twitch', reach: '10.5M', role: 'Relay 城市队长', task: '带队守城市节点' },
-        { name: 'TimTheTatman', handle: '@timthetatman', platform: 'Twitch / YouTube', reach: '8.9M', role: '小队组织者', task: '联队 Relay 推进' },
-        { name: 'DrLupo', handle: '@DrLupo', platform: 'Twitch', reach: '4.9M', role: '战术指挥官', task: '城市增援任务' },
-        { name: 'StoneMountain64', handle: '@StoneMountain64', platform: 'YouTube', reach: '3.1M', role: '战场控制者', task: 'Relay 节点防守' },
-        { name: 'TheBrokenMachine', handle: '@TheBrokenMachine', platform: 'YouTube', reach: '1.4M', role: '硬核战术解析', task: '机制教学直播' },
+        { name: 'shroud', handle: '@shroud', platform: 'Twitch / YouTube', audience: 'Core FPS', role: 'Relay 城市队长', task: '带队守城市节点', photo: '图片素材/kol/shroud.png' },
+        { name: 'TimTheTatman', handle: '@timthetatman', platform: 'Twitch / YouTube', audience: 'Mainstream FPS', role: '小队组织者', task: '联队 Relay 推进', photo: '图片素材/kol/timtimtatman.png' },
+        { name: 'DrLupo', handle: '@DrLupo', platform: 'Twitch', audience: 'Core FPS', role: '战术指挥官', task: '城市增援任务', photo: '图片素材/kol/drlupo.png' },
+        { name: 'StoneMountain64', handle: '@StoneMountain64', platform: 'YouTube', audience: 'Casual FPS', role: '战场控制者', task: 'Relay 节点防守', photo: '图片素材/kol/stonemountain64.png' },
+        { name: 'Symfuhny', handle: '@Symfuhny', platform: 'Twitch / YouTube · High-Skill FPS', audience: '', role: '高光突击手', task: '变脸潜入与硬盘围猎直播', photo: '图片素材/kol/symfuhny.png' },
       ],
     },
     {
-      code: 'CAT-03', type: '解谜 KOL', en: 'CIPHER HUNTER', color: 'var(--hud-cyan)',
-      desc: 'ARG 破译主力，驱动社区解谜与线索整合',
+      code: 'CAT-03', type: '撤离与战术 KOL', en: 'EXTRACTION & TACTICAL', color: 'var(--hud-cyan)',
+      desc: '撤离玩法与战术内容主力，硬核可信度背书',
       kols: [
-        { name: 'LVNDMARK', handle: '@LVNDMARK', platform: 'Twitch', reach: '580K', role: 'Cipher 首解者', task: 'ARG 线索破译直播' },
-        { name: 'Pestily', handle: '@Pestily', platform: 'Twitch', reach: '620K', role: '密码猎人', task: 'Cipher 解谜组织' },
-        { name: 'Sacriel', handle: '@Sacriel', platform: 'Twitch', reach: '420K', role: '社区协作主导', task: 'Discord 解谜协调' },
-        { name: 'OperatorDrewski', handle: '@OperatorDrewski', platform: 'YouTube', reach: '1.5M', role: '情报收集者', task: '线索整理与视频' },
-        { name: 'Klean', handle: '@KleanKarma', platform: 'Twitch', reach: '320K', role: 'ARG 情报分析', task: '加密信息解读' },
+        { name: 'LVNDMARK', handle: '@LVNDMARK', platform: 'Twitch', audience: 'Hardcore Extraction', role: '撤离战术先锋', task: 'Extraction 高压直播', photo: '图片素材/kol/lvndmark.png' },
+        { name: 'Pestily', handle: '@Pestily', platform: 'Twitch', audience: 'Hardcore Extraction', role: '战术社区领袖', task: '撤离玩法深度内容', photo: '图片素材/kol/pestily.png' },
+        { name: 'OperatorDrewski', handle: '@OperatorDrewski', platform: 'YouTube', audience: 'Milsim / Tactical', role: '战术内容制作', task: '情报与攻略视频', photo: '图片素材/kol/operator.png' },
+        { name: 'Glorious_E', handle: '@Glorious_E', platform: 'Twitch · Hardcore Extraction', audience: '', role: 'Extraction Pressure Lead · 撤离压力实战者', task: 'Physical Drive 围猎实战直播', photo: '图片素材/kol/glorious.png' },
       ],
     },
     {
-      code: 'CAT-04', type: '战术内容 KOL', en: 'TACTICAL ANALYST', color: 'var(--df-green)',
-      desc: '深度玩法解析与机制教学，长视频主力',
+      code: 'CAT-04', type: '大战场解析 KOL', en: 'WARFARE ANALYST', color: 'var(--df-green)',
+      desc: '深度玩法解析与机制教学，大战场主力',
       kols: [
-        { name: 'jackfrags', handle: '@jackfrags', platform: 'YouTube', reach: '4.6M', role: '战术解析师', task: '机制深度评测' },
-        { name: 'Westie', handle: '@WestieYT', platform: 'YouTube', reach: '1.3M', role: '攻略制作者', task: '武器与打法攻略' },
-        { name: 'LevelCapGaming', handle: '@LevelCapGaming', platform: 'YouTube', reach: '2.9M', role: '系统评测专家', task: '完整机制解析' },
-        { name: 'Tomographic', handle: '@Tomographic', platform: 'YouTube', reach: '780K', role: '情报地图制作', task: 'Relay 路线规划' },
-        { name: 'Stodeh', handle: '@Stodeh', platform: 'YouTube', reach: '1.1M', role: '高手演示者', task: '精英玩法展示' },
+        { name: 'Tdawgsmitty', handle: '@Tdawgsmitty', platform: 'YouTube · Mainstream FPS / Delta Force', audience: '', role: 'Mainstream FPS Explainer · 主流 FPS 体验解析者', task: 'Delta Force Warfare 新玩家体验与转化视频', photo: '图片素材/kol/tdawg.png' },
+        { name: 'jackfrags', handle: '@jackfrags', platform: 'YouTube', audience: 'Battlefield / FPS', role: '战术解析师', task: '机制深度评测', photo: '图片素材/kol/jackfrags.png' },
+        { name: 'Tomographic', handle: '@Tomographic', platform: 'YouTube', audience: 'Map & Strategy', role: '情报地图制作', task: 'Relay 路线规划', photo: '图片素材/kol/tomographic.png' },
       ],
     },
     {
-      code: 'CAT-05', type: '短视频高光 KOL', en: 'SHORTS / LORE OPS', color: 'var(--df-amber)',
-      desc: '剧情叙事 ARG 理论与高光剪辑，破圈传播',
+      code: 'CAT-05', type: '解谜与剧情 KOL', en: 'CIPHER / LORE / ARG', color: 'var(--df-amber)',
+      desc: '剧情叙事 ARG 理论，Cipher 破译与社区扩散',
       kols: [
-        { name: 'MatPat', handle: '@MatPatGT', platform: 'YouTube', reach: '18.9M', role: '叙事分析者', task: 'ARG 剧情推理视频' },
-        { name: 'Wendigoon', handle: '@Wendigoon', platform: 'YouTube', reach: '3.2M', role: '阴谋论探索者', task: 'GHOST 背景故事' },
-        { name: 'Nexpo', handle: '@Nexpo', platform: 'YouTube', reach: '2.8M', role: '神秘事件记录', task: 'ARG 事件纪录片' },
-        { name: 'Night Mind', handle: '@NightMind', platform: 'YouTube', reach: '1.1M', role: 'ARG 解析专家', task: 'Cipher 破译指南' },
-        { name: 'Discord KOL', handle: '@各城市频道', platform: 'Discord', reach: '社区核心', role: '频道意见领袖', task: 'Relay 频道运营' },
+        { name: 'MatPat', handle: '@MatPatGT', platform: 'YouTube', audience: 'Lore / Theory', role: '叙事分析者', task: 'ARG 剧情推理视频', photo: '图片素材/kol/matpat.png' },
+        { name: 'Wendigoon', handle: '@Wendigoon', platform: 'YouTube', audience: 'Mystery / Lore', role: '阴谋论探索者', task: 'GHOST 背景故事', photo: '图片素材/kol/wendigeon.png' },
+        { name: 'Nexpo', handle: '@Nexpo', platform: 'YouTube', audience: 'ARG / Mystery', role: '神秘事件记录', task: 'ARG 事件纪录片', photo: '图片素材/kol/nexpo.png' },
+        { name: 'Discord KOL', handle: '@各城市频道', platform: 'Discord', audience: '社区核心', role: '频道意见领袖', task: 'Relay 频道运营', photo: '图片素材/kol/discord.png' },
       ],
     },
   ];
@@ -739,38 +771,50 @@ const OGSec08 = () => {
     '周战报记录 Creator 城市战绩',
   ];
   return (
-    <section id="og-08" className="section" style={{ borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
-        <OGMark n="08" k="CREATOR FIELD OPS" sub=" / Creator 分类作战" />
-        <SectionHeader num="08" name="CREATOR FIELD OPS" title={<>五类 Creator，<br />全域行动网络</>} kicker="按创作类型分工，五类 Creator 从游戏内到社区到现实触点形成完整内容生态。每位 Creator 都有专属角色与任务，照片位置已预留。" accent="var(--mi-red)" />
+    <section id="og-08" className="section" style={{ borderBottom: '1px solid var(--line)', padding: 0 }}>
+      {/* Header with background image */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <img src="图片素材/第二主kv.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.92 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 100%)', zIndex: 1 }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 72, paddingBottom: 72 }}>
+          <OGMark n="08" k="CREATOR FIELD OPS" sub=" / Creator 分类作战" />
+          <SectionHeader num="08" name="CREATOR FIELD OPS" title={<>五类 Creator，<br />全域行动网络</>} kicker="按创作类型分工，五类 Creator 从游戏内到社区到现实触点形成完整内容生态。每位 Creator 都有专属角色与任务，照片位置已预留。" accent="var(--mi-red)" />
+        </div>
+      </div>
+      {/* Rest of section */}
+      <div className="container" style={{ paddingTop: 72, paddingBottom: 96 }}>
         {categories.map((cat) => (
           <div key={cat.code} style={{ marginBottom: 36 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, paddingBottom: 10, borderBottom: `1px solid ${cat.color}40` }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: cat.color, letterSpacing: '0.18em', border: `1px solid ${cat.color}`, padding: '3px 10px' }}>{cat.code}</div>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 900, letterSpacing: '0.08em' }}>{cat.en}</div>
-              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: cat.color }}>/ {cat.type}</div>
+              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: cat.color }}>/ {cat.type}</div>
               <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${cat.color}30, transparent)` }}></div>
-              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)' }}>{cat.desc}</div>
+              <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)' }}>{cat.desc}</div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cat.kols.length}, 1fr)`, gap: 12 }}>
               {cat.kols.map((kol, ki) => (
                 <RevealOG key={kol.name} delay={ki + 1} className="card" style={{ padding: 0, overflow: 'hidden', borderTop: `2px solid ${cat.color}` }}>
                   <div style={{ paddingBottom: '80%', position: 'relative', background: 'var(--bg-elev)', borderBottom: '1px solid var(--line)' }}>
-                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
-                      <div style={{ width: 56, height: 56, border: `2px dashed ${cat.color}50`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: `${cat.color}80`, letterSpacing: '0.04em' }}>PHOTO</span>
+                    {kol.photo ? (
+                      <img src={kol.photo} alt={kol.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                    ) : (
+                      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
+                        <div style={{ width: 56, height: 56, border: `2px dashed ${cat.color}50`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: `${cat.color}80`, letterSpacing: '0.04em' }}>PHOTO</span>
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'var(--text-mute)', letterSpacing: '0.08em' }}>CREATOR IMG</div>
                       </div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'var(--text-mute)', letterSpacing: '0.08em' }}>CREATOR IMG</div>
-                    </div>
+                    )}
                   </div>
                   <div style={{ padding: '12px 14px' }}>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 800, letterSpacing: '0.04em', marginBottom: 2 }}>{kol.name}</div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: cat.color, marginBottom: 6 }}>{kol.handle}</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 10, color: 'var(--text-mute)', marginBottom: 10, lineHeight: 1.4 }}>{kol.platform} · {kol.reach}</div>
+                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-mute)', marginBottom: 10, lineHeight: 1.4 }}>{kol.platform}{kol.audience ? ` · ${kol.audience}` : ''}</div>
                     {[['ROLE', kol.role], ['TASK', kol.task]].map(([k, v]) => (
                       <div key={k} style={{ padding: '6px 0', borderTop: '1px dashed var(--line)' }}>
                         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 7, color: 'var(--text-mute)', letterSpacing: '0.1em', marginBottom: 2 }}>{k}</div>
-                        <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 10, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{v}</div>
+                        <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{v}</div>
                       </div>
                     ))}
                   </div>
@@ -787,7 +831,7 @@ const OGSec08 = () => {
               {['加密硬盘道具', '城市 Relay 坐标卡', '紫外线线索卡', '抽象二维码', '红色信号灯', '一次性密码页', '任务简报音频', '官网个人入口码'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'center', padding: '8px 10px', background: 'var(--bg-elev)', border: '1px solid var(--line)' }}>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--df-amber)', flexShrink: 0 }}>0{i + 1}</span>
-                  <span style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)' }}>{item}</span>
+                  <span style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)' }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -802,7 +846,7 @@ const OGSec08 = () => {
                   </div>
                   {i < arr.length - 1 && <div style={{ width: 1, height: 22, background: 'var(--mi-red)', opacity: 0.25 }}></div>}
                 </div>
-                <div style={{ paddingTop: 6, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.4, minHeight: i < arr.length - 1 ? 50 : 'auto' }}>{step}</div>
+                <div style={{ paddingTop: 6, fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.4, minHeight: i < arr.length - 1 ? 50 : 'auto' }}>{step}</div>
               </div>
             ))}
           </RevealOG>
@@ -822,10 +866,18 @@ const OGSec09 = () => {
     { type: 'Event Booth', location: 'Gamescom 等活动', content: '任务箱展示 / 现场解谜', color: 'var(--df-green)' },
   ];
   return (
-    <section id="og-09" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
-        <OGMark n="09" k="IRL SIGNAL POINTS" sub=" / 线下城市信号点" />
-        <SectionHeader num="09" name="IRL SIGNAL POINTS" title={<>现实触点，<br />安全可控</>} kicker="线下不做「城市被攻击」表达，也不做高风险户外挑战。只做安全公共空间中的信号线索触点：数字屏、电竞酒吧、影院周边、活动展会和校园电竞社群。" accent="var(--mi-red)" />
+    <section id="og-09" className="section" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--line)', padding: 0 }}>
+      {/* Header with background image */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <img src="图片素材/IRL Signal Points 背景图.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.92 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 100%)', zIndex: 1 }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 72, paddingBottom: 72 }}>
+          <OGMark n="09" k="IRL SIGNAL POINTS" sub=" / 线下城市信号点" />
+          <SectionHeader num="09" name="IRL SIGNAL POINTS" title={<>现实触点，<br />安全可控</>} kicker="线下不做「城市被攻击」表达，也不做高风险户外挑战。只做安全公共空间中的信号线索触点：数字屏、电竞酒吧、影院周边、活动展会和校园电竞社群。" accent="var(--mi-red)" />
+        </div>
+      </div>
+      {/* Rest of section */}
+      <div className="container" style={{ paddingTop: 72, paddingBottom: 96 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {points.map((p, i) => (
@@ -837,11 +889,11 @@ const OGSec09 = () => {
                   </div>
                   <div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'var(--text-mute)', letterSpacing: '0.12em', marginBottom: 4 }}>位置</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{p.location}</div>
+                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{p.location}</div>
                   </div>
                   <div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, color: 'var(--text-mute)', letterSpacing: '0.12em', marginBottom: 4 }}>内容</div>
-                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{p.content}</div>
+                    <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{p.content}</div>
                   </div>
                 </div>
               </RevealOG>
@@ -871,7 +923,7 @@ const OGSec09 = () => {
           <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 0 }}>
             {['扫码进入城市 Relay 页面', '选择城市节点', '领取低门槛任务提示', '加入 Discord 城市频道', '回到游戏完成任务'].map((step, i, arr) => (
               <React.Fragment key={step}>
-                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-secondary)', padding: '6px 12px', background: 'var(--bg-elev)', border: '1px solid var(--line)' }}>{step}</div>
+                <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-secondary)', padding: '6px 12px', background: 'var(--bg-elev)', border: '1px solid var(--line)' }}>{step}</div>
                 {i < arr.length - 1 && <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--mi-red)', padding: '0 4px' }}>→</span>}
               </React.Fragment>
             ))}
@@ -948,10 +1000,18 @@ const OGSec10 = ({ navigate }) => {
   ];
   const channels = ['Website', 'Reddit', 'Discord', 'Shorts', 'Creator Stream'];
   return (
-    <section id="og-10" className="section" style={{ borderBottom: '1px solid var(--line)' }}>
-      <div className="container">
-        <OGMark n="10" k="WEEKLY SIGNAL REPORT" sub=" / 每周战报与社区叙事" />
-        <SectionHeader num="10" name="WEEKLY SIGNAL REPORT" title={<>每周战报，<br />下周行动入口</>} kicker="每周战报不是总结，而是下一周行动的入口。它告诉玩家：哪个 Relay 告急、哪个城市守住了、哪个 Creator 小队贡献最高、哪个 Cipher 线索还没解。" accent="var(--mi-red)" />
+    <section id="og-10" className="section" style={{ borderBottom: '1px solid var(--line)', padding: 0 }}>
+      {/* Header with background image */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <img src="图片素材/横向 Header 背景图.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.92 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 100%)', zIndex: 1 }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: 72, paddingBottom: 72 }}>
+          <OGMark n="10" k="WEEKLY SIGNAL REPORT" sub=" / 每周战报与社区叙事" />
+          <SectionHeader num="10" name="WEEKLY SIGNAL REPORT" title={<>每周战报，<br />下周行动入口</>} kicker="每周战报不是总结，而是下一周行动的入口。它告诉玩家：哪个 Relay 告急、哪个城市守住了、哪个 Creator 小队贡献最高、哪个 Cipher 线索还没解。" accent="var(--mi-red)" />
+        </div>
+      </div>
+      {/* Rest of section */}
+      <div className="container" style={{ paddingTop: 72, paddingBottom: 96 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
           <RevealOG dir="left" className="card" style={{ padding: 0, overflow: 'hidden' }}>
             <div style={{ padding: '12px 20px', background: 'var(--bg-elev)', borderBottom: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -963,7 +1023,7 @@ const OGSec10 = ({ navigate }) => {
                 <div style={{ width: 4, height: 28, background: b.color, flexShrink: 0 }}></div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: b.color, letterSpacing: '0.1em', marginBottom: 2 }}>{b.label.toUpperCase()}</div>
-                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 12, color: 'var(--text-mute)' }}>{b.desc}</div>
+                  <div style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-mute)' }}>{b.desc}</div>
                 </div>
               </div>
             ))}
@@ -997,6 +1057,9 @@ const OGSec10 = ({ navigate }) => {
           </div>
         </div>
         <OGDivider label="10.2 · Personalized Intelligence File — 个人情报档案" />
+        <p style={{ fontFamily: "'PingFang SC','Microsoft YaHei',sans-serif", fontSize: 13, color: 'var(--text-mute)', margin: '0 0 20px', lineHeight: 1.7 }}>
+          Weekly Report 告诉社区这周发生了什么；Personalized Intelligence File 告诉玩家「我在这场行动中做了什么」。
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
           <RevealOG dir="left" className="card" style={{ padding: '28px 28px' }}>
             <div className="ticker" style={{ color: 'var(--hud-cyan)', marginBottom: 16 }}>// PERSONALIZED INTELLIGENCE FILE</div>

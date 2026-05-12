@@ -107,8 +107,8 @@ const IGSec01 = ({ navigate }) => {
             <div style={{ marginTop: 10, fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontWeight: 700, fontSize: 20, color: 'var(--text-secondary)' }}>游戏内行动方案</div>
             <div style={{ marginTop: 20, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--df-green)', letterSpacing: '0.16em', minHeight: 20 }}>{'>'} {typed}<span className="cursor"></span></div>
             <div style={{ marginTop: 18, maxWidth: 640, fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <p style={{ color: 'var(--text-primary)', fontSize: 15, lineHeight: 1.7, margin: 0 }}>失联IMF特工留下的情报被拆分为多个 Physical Drive / 实体情报硬盘。</p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.75, margin: 0 }}>玩家将在Operations中回收实体情报硬盘，在Disguise Protocol中完成短时伪装潜入，在Warfare中争夺信号塔，并共同推进Final Extraction终局撤离任务。</p>
+              <p style={{ color: 'var(--text-primary)', fontSize: 15, lineHeight: 1.7, margin: 0 }}>失联IMF特工留下的情报被拆分为多个 Physical Drive / 实体情报硬盘。这些情报指向 Rogue Signal 的源头：Haavk 正在测试的 GHOST AI 与 Ghost Relay 网络。</p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.75, margin: 0 }}>玩家将在Operations中回收实体情报硬盘，在Disguise Protocol中伪装潜入 Haavk 控制区，在Warfare中争夺信号塔，并共同推进Final Extraction终局撤离任务。</p>
               <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.75, margin: 0 }}>核心不是<span style={{ color: 'var(--df-amber)', fontWeight: 600 }}>「买联动外观」</span>，而是让每一局对战都进入同一条情报战任务链。</p>
             </div>
           </div>
@@ -414,7 +414,7 @@ const IGSec05 = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 8 }}>
           <RevealG dir="left" className="card" style={{ padding: '20px 24px' }}>
             <div className="ticker" style={{ color: 'var(--df-green)', marginBottom: 12 }}>// 点位类型</div>
-            {[['Black Site Server Room', '黑站服务器室'], ['Mobile Relay Van', '移动中继车'], ['Underground Data Cache', '地下数据缓存点']].map(([en, zh]) => (
+            {[['Haavk Black Site Server Room', '哈夫克黑站服务器室'], ['Haavk Mobile Relay Van', '哈夫克移动中继车'], ['Underground Data Cache', '地下数据缓存点']].map(([en, zh]) => (
               <div key={en} style={{ padding: '9px 0', borderTop: '1px dashed var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 }}>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-primary)' }}>{en}</span>
                 <span style={{ fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontSize: 12, color: 'var(--text-mute)' }}>{zh}</span>
@@ -549,7 +549,7 @@ const IGSec06 = () => (
             {[
               ['获得方式', '机密点位附近拾取，Operations限定，每局1次'],
               ['启动方式', '手动激活，0.8秒启动动作，不可瞬发'],
-              ['伪装对象', 'AI单位 / 敌方干员基础轮廓，不复制皮肤和昵称'],
+              ['伪装对象', 'Haavk AI巡逻识别轮廓 / Haavk安全单位基础轮廓 / 敌方干员基础轮廓，不复制皮肤和昵称'],
             ].map(([k, v]) => (
               <div key={k} style={{ padding: '9px 0', borderTop: '1px dashed var(--line)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-mute)', letterSpacing: '0.14em', marginBottom: 4 }}>{k}</div>
@@ -789,7 +789,7 @@ const IGSec08 = () => {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 900, letterSpacing: '0.04em', color: 'var(--df-amber)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 6 }}>SATELLITE SWEEP</div>
             <div style={{ fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontSize: 14, color: 'var(--text-mute)', letterSpacing: '0.08em', marginBottom: 18 }}>卫星扫描</div>
             <p style={{ fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.75, margin: '0 0 10px', maxWidth: 680 }}>
-              Satellite Sweep 是 Warfare 线的核心局内高光。当一方成功控制关键中继链路后，系统触发一次 20 秒的<span style={{ color: 'var(--df-amber)', fontWeight: 600 }}>战术级卫星情报支援</span>。
+              Satellite Sweep 是 G.T.I. 短暂夺回被 <span style={{ color: 'var(--df-amber)' }}>Haavk</span> 污染的中继链路后，获得的一次<span style={{ color: 'var(--df-amber)', fontWeight: 600 }}>战术级情报窗口</span>——用于反制 Rogue Signal 的局部信息支援。
             </p>
             <p style={{ fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontSize: 14, color: 'var(--text-mute)', lineHeight: 1.75, margin: 0, maxWidth: 680 }}>
               它不是透视大招，而是一次克制的信息窗口：帮助团队判断敌方载具、重火力和干扰源位置，但不会暴露步兵精确坐标，也不会持续追踪单个玩家。

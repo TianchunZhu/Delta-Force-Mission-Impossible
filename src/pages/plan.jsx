@@ -1,7 +1,6 @@
 /* global React, Icon, DossierArt, LabelRow, SectionHeader, Breadcrumb */
 const { useState: useStateP, useEffect: useEffectP, useRef: useRefP } = React;
 
-// ============= REVEAL HOOK =============
 const useReveal = () => {
   const ref = useRefP(null);
   const [shown, setShown] = useStateP(false);
@@ -9,10 +8,7 @@ const useReveal = () => {
     if (!ref.current || shown) return;
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
       });
     }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
     io.observe(ref.current);
@@ -23,7 +19,18 @@ const useReveal = () => {
 
 // Section wrapper with reveal
 const RevealBlock = ({ children, className = '', delay = 0, dir = 'up', as: As = 'div', ...rest }) => {
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   const dirCls = dir === 'left' ? 'reveal-l' : dir === 'right' ? 'reveal-r' : '';
   const dl = delay ? `delay-${delay}` : '';
   return (
@@ -36,7 +43,18 @@ const RevealBlock = ({ children, className = '', delay = 0, dir = 'up', as: As =
 // Animated counter
 const Counter = ({ to, duration = 1500, prefix = '', suffix = '', decimals = 0 }) => {
   const [val, setVal] = useStateP(0);
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   useEffectP(() => {
     if (!shown) return;
     const start = performance.now();
@@ -55,7 +73,18 @@ const Counter = ({ to, duration = 1500, prefix = '', suffix = '', decimals = 0 }
 
 // Animated ring (svg circle with stroke-dashoffset)
 const Ring = ({ pct = 70, color = 'var(--df-green)', label }) => {
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   const r = 38;
   const c = 2 * Math.PI * r;
   const dash = shown ? c * (1 - pct / 100) : c;
@@ -163,6 +192,9 @@ const Sec01Hero = () => {
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
                 因此，这次联动的目标不是简单引入一个知名IP，也不是做一次皮肤售卖，而是用"全球情报战"的外壳强化三角洲行动的差异化心智：它既有现代大战场的规模，也有撤离玩法的紧张感，更有小队协作和电影化任务执行的沉浸感。最终让欧美FPS用户形成一个清晰判断——<span style={{ color: 'var(--df-green)', fontWeight: 600 }}>三角洲行动是这个夏天最具电影感的小队战术FPS。</span>
+              </p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+                <span style={{ color: 'var(--df-amber)', fontWeight: 600 }}>Operation: Rogue Signal 不是一次脱离世界观的外部联动。</span>这场行动的源头，是 <span style={{ color: 'var(--df-amber)' }}>Haavk（哈夫克）</span>正在测试的一套异常智能信号系统——<span style={{ color: 'var(--df-amber)' }}>GHOST</span>。GHOST 通过 Ghost Relay 网络污染战场通讯、城市数据节点和撤离通道，释放出无法被常规情报系统识别的 Rogue Signal。IMF 最先截获了这段异常信号，G.T.I. / Delta Force 则负责把它切断。
               </p>
             </div>
           </div>
@@ -380,6 +412,7 @@ const Sec04IPLogic = () => {
     { n: '03', q: '能否吸引欧美FPS玩家？', body: '目标受众需要对IP有足够认知。M:I 在欧美动作片受众、18-45岁男性、战术内容观众中均有强覆盖，且《Final Reckoning》于2025年5月上映，热度窗口与Campaign时间吻合。', verdict: 'MATCHED', pass: true },
     { n: '04', q: '是否会破坏产品定位？', body: '联动不能让核心玩家感到"世界观被稀释"。M:I 属于写实谍战动作类型，不存在幻想元素入侵的风险；执行上需确保IP作为任务包装层，而非游戏核心机制的替代。', verdict: 'CONTROLLED', pass: false },
     { n: '05', q: '是否适合暑期事件？', body: '需要具备大片感、话题感、可直播、可短视频的传播特质。M:I 的悬疑解谜、极限任务和高燃时刻天然适合社交高光剪辑，ARG解密链路也可驱动社区持续参与。', verdict: 'MATCHED', pass: true },
+    { n: '06', q: '是否能嵌入三角洲行动世界观？', body: 'Mission: Impossible 提供失联特工、机密情报、伪装潜入和AI威胁的叙事入口；三角洲行动提供 Haavk / G.T.I. 的既有冲突框架。因此 Rogue Signal 不是外部IP强行插入，而是一次由 Haavk 触发、IMF发现、G.T.I.接管的联合情报行动。', verdict: 'MATCHED', pass: true },
   ];
   return (
     <section id="sec-05" className="section">
@@ -393,7 +426,7 @@ const Sec04IPLogic = () => {
         <RevealBlock className="card" style={{ padding: 0, overflow: 'hidden', marginBottom: 20 }}>
           <div style={{ padding: '14px 24px', background: 'var(--bg-elev)', borderBottom: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span className="ticker">// IP筛选矩阵 — MISSION: IMPOSSIBLE SCREENING</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--df-green)', letterSpacing: '0.14em' }}>5 / 5 CRITERIA EVALUATED</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--df-green)', letterSpacing: '0.14em' }}>6 / 6 CRITERIA EVALUATED</span>
           </div>
           {criteria.map((c, i) => (
             <RevealBlock key={c.n} delay={i + 1} style={{
@@ -551,13 +584,14 @@ const Sec05Creative = () => (
           <span className="dossier-corner tl">// CLASSIFIED BRIEF</span>
           <span className="dossier-corner tr">60-SECOND PITCH</span>
           <div style={{ paddingTop: 28, fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif" }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>一名IMF特工在追踪"Rogue Signal"时失联。</p>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>他最后一次上传的情报显示：一个跨国军火网络正在复制"Entity"的攻击逻辑，利用幽灵中继站 Ghost Relay 入侵全球情报链路、PMC行动路线、城市数据中心和撤离通道。</p>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>IMF无法公开介入，也无法确认这名特工是否叛变、被俘，或正在执行更深层的卧底任务。</p>
-            <p style={{ color: 'var(--text-primary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 16px', fontWeight: 600 }}>Delta Force被临时纳入联合行动。</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>一名IMF特工在追踪一段异常通讯时失联。</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>这段信号被内部命名为 <span style={{ color: 'var(--df-amber)', fontWeight: 600 }}>Rogue Signal</span>。它不像普通入侵，也不像传统战场干扰：它会预测行动路线、污染中继节点、伪造情报来源，并让城市Relay进入失控状态。</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>特工最后一次上传的情报显示：Rogue Signal 的源头，指向 <span style={{ color: 'var(--df-amber)' }}>Haavk</span> 正在测试的一套异常智能系统——<span style={{ color: 'var(--df-amber)' }}>GHOST</span>。GHOST 通过 Ghost Relay 网络渗透全球战场通讯、PMC行动路线、城市数据节点和撤离通道。</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 12px' }}>IMF无法公开介入，也无法确认这名特工是否被俘、叛变，或仍在执行更深层的卧底任务。</p>
+            <p style={{ color: 'var(--text-primary)', fontSize: 14, lineHeight: 1.8, margin: '0 0 16px', fontWeight: 600 }}>G.T.I. / Delta Force 被临时纳入联合行动。</p>
             <div style={{ padding: '14px 16px', background: 'var(--bg-elev)', borderLeft: '2px solid var(--df-green)', marginBottom: 16 }}>
               <div className="ticker" style={{ color: 'var(--df-green)', marginBottom: 8 }}>// 任务很简单，也几乎不可能</div>
-              {['找到失联特工留下的加密硬盘。', '破解他散落在全球Relay节点中的密码碎片。', '在敌方完全接管信号网络前，夺回Rogue Signal的源头。'].map((s, i) => (
+              {['找到失联特工留下的 Physical Drive。', '破解 Rogue Signal 中的 Cipher Fragment。', '切断 Haavk 的 Ghost Relay 网络。', '在 GHOST 完全接管信号链路前，完成最终撤离。'].map((s, i) => (
                 <div key={i} style={{ display: 'flex', gap: 10, padding: '5px 0', borderTop: i ? '1px dashed var(--line)' : 'none', fontSize: 13.5, color: 'var(--text-secondary)' }}>
                   <span style={{ color: 'var(--df-green)', fontFamily: 'var(--font-mono)', fontSize: 10, flexShrink: 0, paddingTop: 2 }}>0{i + 1}</span>
                   <span>{s}</span>
@@ -573,9 +607,9 @@ const Sec05Creative = () => (
         {/* Right: 3 Story Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           {[
-            { n: '01', en: 'THE AGENT', zh: '一名IMF特工失联', body: '他留下了一段不完整的幽灵信号。身份未知，立场未知，坐标未知。', color: 'var(--df-amber)' },
-            { n: '02', en: 'THE SIGNAL', zh: '幽灵中继站正在扩散', body: 'Ghost Relay开始入侵城市Relay节点，每一个节点都可能成为下一次情报泄露的入口。', color: 'var(--mi-red)' },
-            { n: '03', en: 'THE MISSION', zh: 'Delta Force接管行动', body: '玩家必须夺取硬盘、伪装潜入、破解密码，并在最终撤离窗口关闭前锁定Rogue Signal源头。', color: 'var(--df-green)' },
+            { n: '01', en: 'THE AGENT', zh: '一名IMF特工失联', body: '他最先截获了 Rogue Signal，并追踪到 Haavk 的异常中继网络。最后上传中只留下了破碎坐标、加密硬盘和一段无法验证的GHOST痕迹。', color: 'var(--df-amber)' },
+            { n: '02', en: 'THE SIGNAL', zh: 'Rogue Signal 正在扩散', body: '这段信号由 GHOST 生成，并通过 Ghost Relay 网络污染城市Relay节点。它会伪造情报、干扰通讯、预测小队行动路线。', color: 'var(--mi-red)' },
+            { n: '03', en: 'THE MISSION', zh: 'G.T.I. / Delta Force 接管行动', body: '玩家必须回收 Physical Drive、伪装潜入 Haavk 控制区、破解 Rogue Signal 中的 Cipher Fragment，并在最终撤离窗口关闭前切断 Ghost Relay 源头。', color: 'var(--df-green)' },
           ].map((s, i) => (
             <RevealBlock key={s.n} delay={i + 1} className="card" style={{ padding: '20px 24px', borderLeft: `2px solid ${s.color}`, flex: 1 }}>
               <div style={{ display: 'flex', gap: 10, alignItems: 'baseline', marginBottom: 6 }}>
@@ -610,12 +644,12 @@ const Sec05Creative = () => (
       <div className="divider-bar" style={{ marginBottom: 20 }}><span className="marker"></span><span>MAIN MISSION THREAD — 主任务线 · 6 MISSIONS</span></div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
         {[
-          { n: 'M01', en: 'Trace the Last Upload', zh: '追踪最后上传', body: '玩家从失联IMF特工留下的残缺信号出发，定位第一批Ghost Relay节点。建立悬念入口，开启城市Relay选择和全服战况页。' },
-          { n: 'M02', en: 'Recover the Physical Drive', zh: '回收实体硬盘', body: '失联特工的情报被拆分成多个实体硬盘，散落在高危战区。把Operations撤离目标包装成情报回收行动。' },
-          { n: 'M03', en: 'Assume the Cover', zh: '接管伪装身份', body: '玩家获得IMF身份伪装协议，短时伪装成敌方干员或AI单位进入机密区域。让碟中谍最有辨识度的"伪装"机制融入玩法。' },
-          { n: 'M04', en: 'Secure the Relay Chain', zh: '稳固中继链路', body: 'Warfare中的信号塔和数据上传站成为城市Relay的带宽来源。让大战场占点行为接入同一条全球叙事链路。' },
-          { n: 'M05', en: 'Break the Impossible Cipher', zh: '破解不可能密码', body: '玩家、Discord社区和Creator共同破解失联特工留下的密码碎片。Campaign从游戏内延伸到社交ARG和现实挑战。' },
-          { n: 'M06', en: 'Final Extraction', zh: '最终撤离', body: '中央Ghost Relay坐标被破解后，玩家开启最终反攻，在撤离窗口关闭前夺回Rogue Signal源头，形成Campaign终局传播高潮。' },
+          { n: 'M01', en: 'Trace the Rogue Signal', zh: '追踪幽灵信号', body: '玩家从失联IMF特工留下的残缺通讯出发，定位 Rogue Signal 的第一批异常中继节点。建立悬念入口，开启城市Relay选择和全服战况页。' },
+          { n: 'M02', en: 'Recover the Physical Drive', zh: '回收实体情报硬盘', body: '失联特工的情报被拆分成多个 Physical Drive，散落在 Haavk 控制或争夺中的高危战区。把Operations撤离目标包装成情报回收行动。' },
+          { n: 'M03', en: 'Assume the Cover', zh: '接管伪装身份', body: '玩家使用IMF身份伪装协议，短时伪装成 Haavk 单位或AI巡逻识别对象，潜入机密区域。让碟中谍最有辨识度的"伪装"机制融入玩法。' },
+          { n: 'M04', en: 'Secure the Relay Chain', zh: '稳固中继链路', body: 'Warfare中的信号塔和数据上传站成为反制 Rogue Signal 的带宽来源，阻止 Ghost Relay 继续扩散。让大战场占点行为接入同一条全球叙事链路。' },
+          { n: 'M05', en: 'Break the Rogue Cipher', zh: '破解幽灵信号密码', body: '玩家、Discord社区和Creator共同破解 Rogue Signal 中的 Cipher Fragment，逐步还原 GHOST 的中央源头坐标。Campaign从游戏内延伸到社交ARG和现实挑战。' },
+          { n: 'M06', en: 'Final Extraction', zh: '最终撤离', body: '中央 Ghost Relay 坐标被破解后，玩家开启最终反攻，在 Haavk 完全接管信号链路前夺回 Rogue Signal 源头，形成Campaign终局传播高潮。' },
         ].map((m, i) => (
           <RevealBlock key={m.n} delay={i + 1} className="card" style={{ padding: '20px 22px', position: 'relative', overflow: 'hidden' }}>
             <span style={{ position: 'absolute', top: 10, right: 14, fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 44, color: 'var(--df-green)', opacity: 0.08, lineHeight: 1 }}>{m.n}</span>
@@ -632,7 +666,18 @@ const Sec05Creative = () => (
 
 // ============= 06 SLOGAN =============
 const Sec06Slogan = () => {
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   const zhWords = ['一支小队，', '一个任务，', '没有支援。'];
   const enWords = ['ONE', 'SQUAD.', 'ONE', 'MISSION.', 'NO', 'BACKUP.'];
   return (
@@ -765,7 +810,18 @@ const Sec07Pillars = () => {
 
 // ============= 09 ARCHITECTURE =============
 const Sec09Architecture = () => {
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   return (
     <section id="sec-09" className="section">
       <div className="container">
@@ -849,7 +905,18 @@ const Sec09Architecture = () => {
 
 // ============= 10 PHASING =============
 const Sec10Phasing = () => {
-  const [ref, shown] = useReveal();
+  const ref = useRefP(null);
+  const [shown, setShown] = useStateP(false);
+  useEffectP(() => {
+    if (!ref.current || shown) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { setShown(true); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [shown]);
   const phases = [
     { wk: 'WK -2', name: 'TEASE', sub: 'CIPHER LEAK', x: 5 },
     { wk: 'WK 1', name: 'IGNITE', sub: 'TRAILER + LAUNCH', x: 22 },

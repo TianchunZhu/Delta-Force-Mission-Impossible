@@ -296,12 +296,14 @@ const HomePage = ({ navigate }) => {
           />
           <div className="relay-city-grid">
             {[
-              { relay: 'THAMES RELAY',  zh: '泰晤士节点', img: '泰晤士节点卡.png',  status: '暴露中', type: 'exposed',  defense: 72, cipher: '3 / 7' },
-              { relay: 'LIBERTY RELAY', zh: '自由节点',   img: '自由节点卡.png',    status: '已稳固', type: 'secured',  defense: 89, cipher: '5 / 7' },
-              { relay: 'PACIFIC RELAY', zh: '太平洋节点', img: '太平洋节点卡.png',  status: '被入侵', type: 'breached', defense: 41, cipher: '2 / 7' },
-              { relay: 'RHINE RELAY',   zh: '莱茵节点',   img: '莱茵节点卡.png',    status: '已稳固', type: 'secured',  defense: 95, cipher: '6 / 7' },
-              { relay: 'SEINE RELAY',   zh: '塞纳节点',   img: '塞纳节点卡.png',    status: '暴露中', type: 'exposed',  defense: 63, cipher: '4 / 7' },
-              { relay: 'AURORA RELAY',  zh: '极光节点',   img: '极光节点.png',      status: '被入侵', type: 'breached', defense: 28, cipher: '1 / 7' },
+              { relay: 'THAMES RELAY',   zh: '泰晤士节点',   img: '泰晤士节点卡.png',  status: '暴露中', type: 'exposed',  defense: 72, cipher: '3 / 7' },
+              { relay: 'LIBERTY RELAY', zh: '自由节点',    img: '自由节点卡.png',    status: '已稳固', type: 'secured',  defense: 89, cipher: '5 / 7' },
+              { relay: 'PACIFIC RELAY', zh: '太平洋节点',  img: '太平洋节点卡.png',  status: '被入侵', type: 'breached', defense: 41, cipher: '2 / 7' },
+              { relay: 'RHINE RELAY',   zh: '莱茵节点',    img: '莱茵节点卡.png',    status: '已稳固', type: 'secured',  defense: 95, cipher: '6 / 7' },
+              { relay: 'SEINE RELAY',   zh: '塞纳节点',    img: '塞纳节点卡.png',    status: '暴露中', type: 'exposed',  defense: 63, cipher: '4 / 7' },
+              { relay: 'AURORA RELAY',  zh: '极光节点',    img: '极光节点.png',      status: '被入侵', type: 'breached', defense: 28, cipher: '1 / 7' },
+              { relay: 'IBERIA RELAY',  zh: '伊比利亚节点', img: '伊比利亚节点.png', status: '暴露中', type: 'exposed',  defense: 56, cipher: '3 / 7' },
+              { relay: 'ATLANTIC RELAY',zh: '大西洋节点',  img: '大西洋节点.png',    status: '已稳固', type: 'secured',  defense: 81, cipher: '5 / 7' },
             ].map(city => {
               const barColor = city.type === 'breached' ? 'var(--mi-red)' : city.type === 'exposed' ? 'var(--df-amber)' : 'var(--df-green)';
               return (
@@ -391,11 +393,6 @@ const HomePage = ({ navigate }) => {
                 },
               ].map(card => (
                 <div key={card.num} className="cipher-card">
-                  {card.img && (
-                    <div className="cipher-card-img-wrap">
-                      <img src={`图片素材/${card.img}`} alt={card.title} className="cipher-card-img" />
-                    </div>
-                  )}
                   <div className="cipher-card-inner">
                     <div className="cipher-card-top">
                       <span className="cipher-card-eyebrow">{card.eyebrow}</span>
@@ -404,6 +401,11 @@ const HomePage = ({ navigate }) => {
                     <h4 className="cipher-card-title">{card.title}</h4>
                     <p className="cipher-card-desc">{card.desc}</p>
                   </div>
+                  {card.img && (
+                    <div className="cipher-card-img-wrap">
+                      <img src={`图片素材/${card.img}`} alt={card.title} className="cipher-card-img" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
